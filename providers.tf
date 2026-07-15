@@ -6,7 +6,7 @@ terraform {
     }
   }
 }
-provider oci {
-    config_file_profile="DEFAULT"
-    region = var.region
+provider "oci" {
+  config_file_profile = "DEFAULT"
+  region              = var.region
 }

@@ -1,5 +1,5 @@
 resource "oci_core_vcn" "secure_vcn" {
-  compartment_id = var.compartemt_id
+  compartment_id = var.compartment_id
   cidr_block     = var.vcn_cidr
   display_name   = "VCN_Stage26"
   dns_label      = "stage26"
@@ -7,20 +7,20 @@ resource "oci_core_vcn" "secure_vcn" {
 }
 
 resource "oci_core_internet_gateway" "secure_igw" {
-  compartment_id = var.compartemt_id
+  compartment_id = var.compartment_id
   vcn_id         = oci_core_vcn.secure_vcn.id
   display_name   = "IGW_St26"
   enabled        = true
 }
 
 resource "oci_core_nat_gateway" "secure_ngt" {
-  compartment_id = var.compartemt_id
+  compartment_id = var.compartment_id
   vcn_id         = oci_core_vcn.secure_vcn.id
   display_name   = "NGW_St26"
 }
 
 resource "oci_core_route_table" "public_route_table" {
-  compartment_id = var.compartemt_id
+  compartment_id = var.compartment_id
   vcn_id         = oci_core_vcn.secure_vcn.id
   display_name   = "RT_Public_St26"
   route_rules {
@@ -31,7 +31,7 @@ resource "oci_core_route_table" "public_route_table" {
 }
 
 resource "oci_core_route_table" "private_route_table" {
-  compartment_id = var.compartemt_id
+  compartment_id = var.compartment_id
   vcn_id         = oci_core_vcn.secure_vcn.id
   display_name   = "RT_Private_St26"
   route_rules {
@@ -42,7 +42,7 @@ resource "oci_core_route_table" "private_route_table" {
 }
 
 resource "oci_core_subnet" "public_subnet" {
-  compartment_id = var.compartemt_id
+  compartment_id = var.compartment_id
   vcn_id         = oci_core_vcn.secure_vcn.id
   cidr_block     = var.public_cidr
   display_name   = "Subnet_Public_St26"
@@ -54,7 +54,7 @@ resource "oci_core_subnet" "public_subnet" {
 }
 
 resource "oci_core_subnet" "private_subnet" {
-  compartment_id = var.compartemt_id
+  compartment_id = var.compartment_id
   vcn_id         = oci_core_vcn.secure_vcn.id
   cidr_block     = var.private_cidr
   display_name   = "Subnet_Private_St26"
@@ -67,7 +67,7 @@ resource "oci_core_subnet" "private_subnet" {
 }
 
 resource "oci_core_security_list" "public_security_list" {
-  compartment_id = var.compartemt_id
+  compartment_id = var.compartment_id
   vcn_id         = oci_core_vcn.secure_vcn.id
   display_name   = "SL_Public_St26"
 
@@ -88,7 +88,7 @@ resource "oci_core_security_list" "public_security_list" {
 }
 
 resource "oci_core_security_list" "private_security_list" {
-  compartment_id = var.compartemt_id
+  compartment_id = var.compartment_id
   vcn_id         = oci_core_vcn.secure_vcn.id
   display_name   = "SL_Private_St26"
 

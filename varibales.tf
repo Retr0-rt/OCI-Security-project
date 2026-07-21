@@ -1,4 +1,4 @@
-variable "compartemt_id" {
+variable "compartment_id" {
   type = string
 }
 
@@ -22,11 +22,15 @@ variable "private_cidr" {
 }
 
 variable "web_port" {
-  type = number
+  type    = number
   default = 443
 }
 
 variable "db_port" {
-  type = number
+  type    = number
   default = 1521
+}
+
+variable "ssh_public_key" {
+  type = string
 }

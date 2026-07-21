@@ -11,7 +11,7 @@ data "oci_core_images" "ol8" {
 
 resource "oci_core_instance" "app_server" {
   compartment_id      = var.compartment_id
-  availability_domain = data.oci_identity_availability_domains.ads.availability_domain[0].name
+  availability_domain = data.oci_identity_availability_domains.ads.availability_domains[0].name
   display_name        = "VM_App_St26"
   shape               = "VM.Standard.A1.Flex"
 

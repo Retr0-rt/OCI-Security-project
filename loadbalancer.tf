@@ -31,7 +31,7 @@ resource "oci_load_balancer_backend_set" "app_backend_set" {
 resource "oci_load_balancer_backend" "app_backend" {
   load_balancer_id = oci_load_balancer_load_balancer.public_lb.id
   backendset_name  = oci_load_balancer_backend_set.app_backend_set.name
-  ip_address       = oci_core_instace.app_server.private_ip
+  ip_address       = oci_core_instance.app_server.private_ip
   port             = var.web_port
 }
 

@@ -38,7 +38,7 @@ resource "oci_load_balancer_backend" "app_backend" {
 resource "oci_load_balancer_listener" "lb_http_listner" {
   load_balancer_id         = oci_load_balancer_load_balancer.public_lb.id
   name                     = "LB_listener_HTTPS_St26"
-  default_backend_set_name = oci_load_balancer_backend_set.app_backend_set.id
+  default_backend_set_name = oci_load_balancer_backend_set.app_backend_set.name
   port                     = var.web_port
   protocol                 = "HTTP"
 }

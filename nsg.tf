@@ -100,7 +100,7 @@ resource "oci_core_network_security_group_security_rule" "app_egress_to_db" {
   }
 }
 
-# The autonomous database nsg configuration
+# The database VM nsg configuration
 resource "oci_core_network_security_group" "db_nsg" {
   compartment_id = var.compartment_id
   vcn_id         = oci_core_vcn.secure_vcn.id

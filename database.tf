@@ -20,8 +20,21 @@ resource "oci_core_instance" "db_vm" {
         source_id = data.oci_core_images.ol8.images[0].id
     }
 
+    agent_config {
+      are_all_plugins_disabled = false
+
+      plugins_config {
+        name = "Bastion"
+        desired_state = "ENABLED"
+      }
+    }
+
     metadata = {
         ssh_authorized_keys = var.ssh_public_key
-        user_data = base64encode(file("${path.module}\\scripts\\install_oracle_db.sh"))
+        user_data = base64encode(file("${path.module}\\scripts\\install_postgres.sh"))
+    }
+    ## just for now so that the vm won't be replaced
+    lifecycle {
+      ignore_changes = [metadata["user_data"]]
     }
 }

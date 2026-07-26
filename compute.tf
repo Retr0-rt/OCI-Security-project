@@ -33,6 +33,15 @@ resource "oci_core_instance" "app_server" {
     nsg_ids          = [oci_core_network_security_group.app_nsg.id]
   }
 
+  agent_config {
+    are_all_plugins_disabled = false
+
+    plugins_config {
+      name          = "Bastion"
+      desired_state = "ENABLED"
+    }
+  }
+
   metadata = {
     ssh_authorized_keys = var.ssh_public_key
   }

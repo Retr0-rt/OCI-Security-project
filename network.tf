@@ -97,4 +97,9 @@ resource "oci_core_security_list" "private_security_list" {
     destination_type = "CIDR_BLOCK"
     protocol         = "all"
   }
+  ingress_security_rules {
+      source = var.private_cidr
+      source_type = "CIDR_BLOCK"
+      protocol = "all"
+  }
 }

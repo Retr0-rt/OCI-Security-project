@@ -107,6 +107,22 @@ resource "oci_core_network_security_group" "db_nsg" {
   display_name   = "NSG_DB_St26"
 }
 
+resource "oci_core_network_security_group_security_rule" "ingress_ssh_to_db" {
+  network_security_group_id = oci_core_network_security_group.db_nsg.id
+
+  direction = "INGRESS"
+  protocol  = "6"
+
+  source_type = "CIDR_BLOCK"
+  source      = "0.0.0.0/0"
+  description = "allow access to port 22 from bastion to database"
+  tcp_options {
+    destination_port_range {
+      min = 22
+      max = 22
+    }
+  }
+}
 
 resource "oci_core_network_security_group_security_rule" "ingress_app_to_db" {
   network_security_group_id = oci_core_network_security_group.db_nsg.id

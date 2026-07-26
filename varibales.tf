@@ -23,7 +23,7 @@ variable "private_cidr" {
 
 variable "web_port" {
   type    = number
-  default = 443
+  default = 80
 }
 
 variable "db_port" {

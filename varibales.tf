@@ -28,7 +28,7 @@ variable "web_port" {
 
 variable "db_port" {
   type    = number
-  default = 1521
+  default = 5432
 }
 
 variable "ssh_public_key" {

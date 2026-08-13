@@ -45,6 +45,6 @@ resource "oci_apm_apm_domain" "stage26_apm_domain" {
   compartment_id = var.compartment_id
   display_name   = "APM_Domain_St26"
   description    = "Always Free APM domain for tracing Python app performance"
-  
-  is_free_tier   = true 
+
+  is_free_tier = true
 }

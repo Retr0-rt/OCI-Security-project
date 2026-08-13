@@ -81,8 +81,8 @@ resource "oci_core_security_list" "public_security_list" {
     source_type = "CIDR_BLOCK"
     protocol    = "6" # the number for tcp 
     tcp_options {
-      min = 433
-      max = 433
+      min = 22
+      max = 22
     }
   }
 }
@@ -98,8 +98,8 @@ resource "oci_core_security_list" "private_security_list" {
     protocol         = "all"
   }
   ingress_security_rules {
-      source = var.private_cidr
-      source_type = "CIDR_BLOCK"
-      protocol = "all"
+    source      = var.private_cidr
+    source_type = "CIDR_BLOCK"
+    protocol    = "all"
   }
 }

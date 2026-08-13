@@ -140,3 +140,29 @@ resource "oci_core_network_security_group_security_rule" "ingress_app_to_db" {
     }
   }
 }
+
+
+### an nsg misscofiguration to test cloud guard rules
+
+resource "oci_core_network_security_group" "cloud_guard_test_nsg" {
+  compartment_id = var.compartment_id
+  vcn_id         = oci_core_vcn.secure_vcn.id
+
+  display_name = "NSG_CloudGuard_Test"
+}
+
+resource "oci_core_network_security_group_security_rule" "cloud_guard_test_rule" {
+  network_security_group_id = oci_core_network_security_group.cloud_guard_test_nsg.id
+
+  direction   = "INGRESS"
+  protocol    = "6"
+  source      = "0.0.0.0/0"
+  source_type = "CIDR_BLOCK"
+
+  tcp_options {
+    destination_port_range {
+      min = 3306
+      max = 3306
+    }
+  }
+}

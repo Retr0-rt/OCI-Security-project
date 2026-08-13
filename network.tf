@@ -81,8 +81,8 @@ resource "oci_core_security_list" "public_security_list" {
     source_type = "CIDR_BLOCK"
     protocol    = "6" # the number for tcp 
     tcp_options {
-      min = 22
-      max = 22
+      min = 443
+      max = 443
     }
   }
 }

@@ -56,3 +56,8 @@ variable "responder_recipe_id" {
   description = "OCID of the Oracle-managed OCI Responder Recipe"
   type        = string
 }
+
+variable "log_analytics_namespace" {
+  description = "OCI Log Analytics namespace"
+  type        = string
+}

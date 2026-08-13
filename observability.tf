@@ -94,7 +94,7 @@ resource "oci_sch_service_connector" "stage26_logs_to_analytics" {
 resource "oci_identity_policy" "stage26_logging_analytics_connector" {
   compartment_id = var.tenancy_id
 
-  name = "Stage26-Logging-Analytics-Connector"
+  name        = "Stage26-Logging-Analytics-Connector"
   description = "Permissions for Stage26 Service Connector to read OCI Logging/Audit and write to Log Analytics"
 
   statements = [
